@@ -1,0 +1,5 @@
+<h1>{{ game.date }}</h1>
+
+{% for player in game.players_list %}
+  <p><a href="{{ player }}/">Player {{ player }}</a></p>
+{% endfor %}
