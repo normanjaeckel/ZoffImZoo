@@ -2,6 +2,7 @@ from django.views import generic
 
 from .models import Game
 
+
 class GameListView(generic.ListView):
     model = Game
     template_name = "game_list.html"
@@ -19,5 +20,8 @@ class PlayerView(generic.DetailView):
     def get_context_data(self, **context):
         context_data = super().get_context_data(**context)
         context_data["player"] = self.kwargs["player"]
+        context_data["player_name"] = self.object.get_player_name(
+            self.kwargs["player"] - 1
+        )
         context_data["cards"] = list(self.object.get_cards(int(self.kwargs["player"])))
         return context_data

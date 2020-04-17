@@ -20,6 +20,7 @@ from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", views.generic.RedirectView.as_view(url="/game/")),
     path("game/", views.GameListView.as_view()),
     path("game/<int:pk>/", views.GameView.as_view()),
     path("game/<int:pk>/<int:player>/", views.PlayerView.as_view()),
