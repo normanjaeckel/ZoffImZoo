@@ -23,5 +23,7 @@ class PlayerView(generic.DetailView):
         context_data["player_name"] = self.object.get_player_name(
             self.kwargs["player"] - 1
         )
-        context_data["cards"] = list(self.object.get_cards(int(self.kwargs["player"])))
+        context_data["cards"] = sorted(
+            self.object.get_cards(int(self.kwargs["player"]))
+        )
         return context_data

@@ -32,7 +32,7 @@ class Game(models.Model):
         return [(i + 1, player) for i, player in enumerate(self.players.split(","))]
 
     def get_cards(self, player):
-        all_cards = sorted(self.cards.split(","))
+        all_cards = self.cards.split(",")
         for i, card in enumerate(all_cards):
             if i % len(self.players.split(",")) == player - 1:
                 yield card
